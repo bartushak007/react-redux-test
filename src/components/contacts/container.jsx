@@ -25,12 +25,19 @@ class Contacts extends Component {
 
 	componentDidMount() {
 		const { getContacts } = this.props;
+		
 		getContacts();
 	}
 
+	onChangePage = (page, pageSize) => {
+		const { getContacts } = this.props;
+
+		getContacts({ page, results: pageSize });
+	};
+
 	render() {
 		const { contacts } = this.props;
-		return <View contacts={contacts} />;
+		return <View contacts={contacts} onChangePage={this.onChangePage} />;
 	}
 }
 

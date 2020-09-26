@@ -2,8 +2,7 @@ import { createReducer } from "../utils";
 import { OActionTypes as contacts } from "./actions";
 
 export const initialState = {
-	info: { page: 1 },
-	pageSize: 12,
+	info: { page: 1, results: 12 },
 	data: [],
 	load: false,
 	error: false,
@@ -19,7 +18,7 @@ export const reducer = createReducer(initialState, {
 			load: false,
 			error: false,
 			info: payload.info,
-			data: payload.data,
+			data: payload.data,			
 		};
 	},
 	[contacts.SET_CONTACTS_ERROR](state) {

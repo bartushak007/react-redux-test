@@ -1,9 +1,9 @@
 import React, { useMemo } from "react";
 import PropTypes from "prop-types";
-import { Card, Row, Col } from "antd";
+import { Card, Row, Col, Pagination } from "antd";
 
-const View = ({ contacts }) => {
-	const { data } = contacts;
+const View = ({ contacts, onChangePage }) => {
+	const { data, info } = contacts;
 	const renderCards = useMemo(
 		() =>
 			data.map(({ id, picture, email }) => (
@@ -21,17 +21,26 @@ const View = ({ contacts }) => {
 	return (
 		<div className={"contacts"}>
 			<Row gutter={24}>{renderCards}</Row>
+			<div className={"contacts__paginationWrapper"}>
+			<Pagination
+				current={info.page}
+				onChange={onChangePage}
+				pageSize={info.results}
+				total={100 * info.results}
+				pageSizeOptions={[12,24,36]}
+			/>
+			</div>
 		</div>
 	);
 };
 
 View.defaultProps = {
-	getContacts: () => {},
+	onChangePage: () => {},
 	contacts: {},
 };
 
 View.propTypes = {
-	getContacts: PropTypes.func,
+	onChangePage: PropTypes.func,
 	contacts: PropTypes.object,
 };
 

@@ -6,13 +6,17 @@ import { getContactsState } from "./selectors";
 export function* getContactsSaga() {
 	while (true) {
 		const { payload: requestData } = yield take(getContactsRequest);
+		
 		const {
-			pageSize,
-			info: { page: infoPage },
+			info: { page: infoPage, results: infoResults },
 		} = yield select(getContactsState);
+
 		const { page: requestPage } = requestData;
+		const { results: requestResults } = requestData;
 
 		const page = requestPage || infoPage;
+		const pageSize = requestResults || infoResults;
+
 		try {
 			const data = yield call(
 				getContactsList,
