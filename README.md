@@ -9,6 +9,9 @@ In the project directory, you can run:
 Runs the app in the development mode.<br />
 Open [http://localhost:3333](http://localhost:3333) to view it in the browser.
 
+Runs the app in the gh pages.<br />
+Open [https://bartushak007.github.io/react-redux-test](https://bartushak007.github.io/react-redux-test) to view it in the browser.
+
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
