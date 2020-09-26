@@ -1,10 +1,10 @@
 import React, { useMemo } from "react";
 import PropTypes from "prop-types";
-import { Card, Row, Col, Pagination, Avatar } from "antd";
+import { Card, Row, Col, Pagination, Avatar, Spin } from "antd";
 import { NATIONALITIES } from "constants/nationalities";
 
 const View = ({ contacts, onChangePage }) => {
-	const { data, info } = contacts;
+	const { data, info, load } = contacts;
 	const renderCards = useMemo(
 		() =>
 			data.map(
@@ -46,6 +46,7 @@ const View = ({ contacts, onChangePage }) => {
 
 	return (
 		<div className={"contacts"}>
+			{load && <Spin size="large"/>}
 			<Row gutter={24}>{renderCards}</Row>
 			<div className={"contacts__paginationWrapper"}>
 				<Pagination
