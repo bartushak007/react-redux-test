@@ -3,7 +3,7 @@ import { OActionTypes as contacts } from "./actions";
 
 export const initialState = {
 	info: { page: 1 },
-	pageSize: 10,
+	pageSize: 12,
 	data: [],
 	load: false,
 	error: false,

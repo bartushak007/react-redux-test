@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useMemo } from "react";
 import PropTypes from "prop-types";
-import { Card } from "antd";
+import { Card, Row, Col } from "antd";
 
 const View = ({ contacts }) => {
 	const { data } = contacts;
+	const renderCards = useMemo(
+		() =>
+			data.map(({ id, picture, email }) => (
+				<Col xs={24} sm={12} md={8} lg={4} key={id.value + email}>
+					<Card
+						hoverable
+						style={{ width: "100%", marginBottom: "24px" }}
+						cover={<img alt="contact" src={picture.large} />}
+					></Card>
+				</Col>
+			)),
+		[data]
+	);
+
 	return (
-		<div>
-			{data.map(({ id, picture, email }) => (
-				<Card
-					key={id.value + email}
-					hoverable
-					style={{ width: 240 }}
-					cover={<img alt="medium" src={picture.medium} />}
-				></Card>
-			))}
+		<div className={"contacts"}>
+			<Row gutter={24}>{renderCards}</Row>
 		</div>
 	);
 };
