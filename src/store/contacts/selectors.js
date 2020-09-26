@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
 
-const _getAppState = (state) => state.app;
+const _getContactsState = (state) => state.contacts;
 
-export const getAppState = createSelector(
-	[_getAppState],
-	(app) => app,
+export const getContactsState = createSelector(
+	[_getContactsState],
+	(contacts) => contacts,
 );

@@ -1,10 +1,11 @@
-import React from 'react';
-import ReactLogo from 'assets/images/react-logo.svg';
+import React from "react";
+
+import Contacts from "../../components/contacts";
 
 const View = () => {
 	return (
-		<div className={'page page--home'}>
-			<img className={'react-logo'} src={ReactLogo} alt="React Logo"/>
+		<div className={"page page--home"}>
+			<Contacts />
 		</div>
 	);
 };
